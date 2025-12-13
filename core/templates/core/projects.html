@@ -1,0 +1,366 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Shiraji General Contracting - Projects{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+    <div class="container hero-content text-center">
+        <h1 class="display-4 mb-4">OUR PROJECTS</h1>
+        <p class="lead">Explore our portfolio of completed work</p>
+    </div>
+</section>
+
+<!-- Projects Gallery -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <h2>Project Gallery</h2>
+            <p>Browse our recent construction projects</p>
+        </div>
+        
+        <!-- Filter Buttons -->
+        <div class="text-center mb-5">
+            <a href="{% url 'projects' %}" class="btn filter-btn {% if not current_category %}active{% endif %}">All</a>
+            <a href="{% url 'projects' %}?category=commercial" class="btn filter-btn {% if current_category == 'commercial' %}active{% endif %}">Commercial</a>
+            <a href="{% url 'projects' %}?category=residential" class="btn filter-btn {% if current_category == 'residential' %}active{% endif %}">Residential</a>
+            <a href="{% url 'projects' %}?category=industrial" class="btn filter-btn {% if current_category == 'industrial' %}active{% endif %}">Industrial</a>
+            <a href="{% url 'projects' %}?category=other" class="btn filter-btn {% if current_category == 'other' %}active{% endif %}">Other</a>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="{{ project.category }}">
+                <div class="project-card">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid">
+                    <div class="project-overlay">
+                        <h5>{{ project.title }}</h5>
+                        <p class="small mb-2">{{ project.category|title }}</p>
+                        <p class="small">Completed: {{ project.completed_date|date:"F Y" }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Default Projects if none in database -->
+            <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="commercial">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Commercial Building" class="img-fluid">
+                    <div class="project-overlay">
+                        <h5>Commercial Office Tower</h5>
+                        <p class="small mb-2">Commercial</p>
+                        <p class="small">Completed: January 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="residential">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Luxury Villa" class="img-fluid">
+                    <div class="project-overlay">
+                        <h5>Luxury Villa Complex</h5>
+                        <p class="small mb-2">Residential</p>
+                        <p class="small">Completed: March 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="industrial">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1553855994-ef9a2a715cd0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Industrial Facility" class="img-fluid">
+                    <div class="project-overlay">
+                        <h5>Manufacturing Plant</h5>
+                        <p class="small mb-2">Industrial</p>
+                        <p class="small">Completed: June 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="commercial">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Office Interior" class="img-fluid">
+                    <div class="project-overlay">
+                        <h5>Corporate Office Renovation</h5>
+                        <p class="small mb-2">Commercial</p>
+                        <p class="small">Completed: August 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="residential">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Modern Home" class="img-fluid">
+                    <div class="project-overlay">
+                        <h5>Modern Residential Complex</h5>
+                        <p class="small mb-2">Residential</p>
+                        <p class="small">Completed: October 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="other">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Retail Space" class="img-fluid">
+                    <div class="project-overlay">
+                        <h5>Shopping Mall Development</h5>
+                        <p class="small mb-2">Other</p>
+                        <p class="small">Completed: December 2023</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Ongoing Projects Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <h2>Ongoing Projects</h2>
+            <p>Current projects in progress</p>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>SL No.</th>
+                        <th>Name of Projects</th>
+                        <th>Name of Client</th>
+                        <th>Consultant/Main Contractor</th>
+                        <th>Scope of Works</th>
+                        <th>Project Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>PEARL BAY MIX DEVELOPMENT PROJECT, CITY OF LIGHTS SECTOR RT 3, PLOT NO.C13 AL-REEM ISLAND, ABU DHABI UAE</td>
+                        <td>AL-TAMOUH INVESTMENT LLC</td>
+                        <td>ACG</td>
+                        <td>Electrical</td>
+                        <td><span class="amount-gradient">AED 1,354,253.00</span></td>
+
+
+
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>COMMERCIAL DEVELOPMENT IN ABU DHABI EQUESTRAIN CLUB (COMMERCIAL MALL), AL MUSRIF, ABU DHABI</td>
+                        <td>ABU DHABI EQUESTRAIN CLUB</td>
+                        <td>BAINONA</td>
+                        <td>Electrical</td>
+                        <td>AED 600,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>EQUESTRIAN ART FOUNDATION, PLOT P5, SECTOR JN, AL JUBAIL ISLAND, ABU DHABI, UAE</td>
+                        <td>JUBAIL ISLAND INVESTMENT - SOLE PROPRIETORSHIP L.L.C.</td>
+                        <td>CEO</td>
+                        <td>Electrical</td>
+                        <td>AED 900,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>PROPOSED NEW 4B+G+ M+ 25 STOREYS+ROOF COMMERCIAL BUILDING ON SECTOR W5, PLOT C3_C4, ABU DHABI ISLAND, ABU DHABI.</td>
+                        <td>AL NAHDHA INVESTMENT LLC</td>
+                        <td>BAINONA</td>
+                        <td>Electrical</td>
+                        <td>AED 1,650,000.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Completed Projects Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <h2>Completed Projects</h2>
+            <p>Successfully delivered projects</p>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>SL No.</th>
+                        <th>Name of Projects</th>
+                        <th>Name of Client</th>
+                        <th>Consultant/Main Contractor</th>
+                        <th>Scope of Works</th>
+                        <th>Project Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>ABU DHABI UNIVERSITY AL-AIN CAMPUS</td>
+                        <td>ABU DHABI UNIVERSITY</td>
+                        <td>KHATIB & ALAMI</td>
+                        <td>MEP</td>
+                        <td>AED 4,600,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>AD HOC-179- MALE CAR PARK EXPANSION PROJECT ZAYED UNIVERSITY, ABU DHABI</td>
+                        <td>SERCO</td>
+                        <td>Canadian Roads Transport and Civil Engineering Consultancy</td>
+                        <td>CIVIL</td>
+                        <td>AED 1,500,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>OFFICE BUILDING (PLOTNO:127a,SECTOR:MADINAT ZAYED)</td>
+                        <td>DEPARTMENT OF ECONOMIC DEVELOPMENT</td>
+                        <td>PIONEER</td>
+                        <td>CIVIL</td>
+                        <td>AED 2,500,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>COMMERCIAL BUILDING (ZONE: AL QATTARA, SECTOR NO : NDOOD JHAM, PLOT NO :02-14-041-04)</td>
+                        <td>HAMDAN RASHED ALI HAMAD ALDEREI</td>
+                        <td>AL MAGHRIB AL ARABI ENGINEERING CONSULTANT</td>
+                        <td>CIVIL</td>
+                        <td>AED 97,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>PROPOSED NEW G+M+3+R COMMERCIAL BUILDING ON SECTOR BANIYAS EAST 2-3, PLOT C19, ABU DHABI</td>
+                        <td>MR. SALEM BUHAQEB AL SHAMSI</td>
+                        <td>BAINONA ENGINEERING CONSULTANCY</td>
+                        <td>MEP</td>
+                        <td>AED 3,800,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>ABU DHABI FUTURE SCHOOLS PROGRAM (PHASE 9) AL BATEEN</td>
+                        <td>DEPARTMENT OF EDUCATION & KNOWLEDGE</td>
+                        <td>MUSANADA</td>
+                        <td>MEP</td>
+                        <td>AED 4,500,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>ABU DHABI FUTURE SCHOOLS PROGRAM AL YAHAR</td>
+                        <td>DEPARTMENT OF EDUCATION & KNOWLEDGE</td>
+                        <td>MUSANADA</td>
+                        <td>MEP</td>
+                        <td>AED 4,500,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>STRIP MALL</td>
+                        <td>ENVIRONMENT AGENCY ABU DHABI</td>
+                        <td>INTERCITY ENGINEERING CONSULTANCY LLC</td>
+                        <td>Electrical</td>
+                        <td>AED 1,650,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>CCTV Installation for SEHA AHS Health Care Facilities</td>
+                        <td>SEHA</td>
+                        <td>GOLDEN SHIELD</td>
+                        <td>ELECTRICAL & CIVIL</td>
+                        <td>AED 3,850,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>PROPOSED SHOPS, SHEDS & OFFICES</td>
+                        <td>HAMAD ADNAN HAMAD MOHAMED ALHAMMADI</td>
+                        <td>LEADERS CONSULTANTS FOR ENGINEERING CONSULTANTS</td>
+                        <td>MEP</td>
+                        <td>AED 1,750,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>THE NATIONAL AQUARIUM</td>
+                        <td>AL QANA</td>
+                        <td>ICCC</td>
+                        <td>ELECTRICAL</td>
+                        <td>AED 3,280,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>AL-AIN CENTER FOR CARE AND REHABILITATION OF DISABLE, AL-AIN, UAE</td>
+                        <td>AL-AIN CENTER FOR CARE AND REHABILITATION OF DISABLE</td>
+                        <td>STH SOCIETY TECHNOLOGY HOUSE LLC</td>
+                        <td>MEP</td>
+                        <td>AED 2,150,000.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Project Process -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <h2>Our Project Process</h2>
+            <p>How we bring your construction projects to life</p>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-4 text-center">
+                <div class="bg-white p-4 rounded shadow h-100">
+                    <div class="service-icon mb-3">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4>1. Consultation</h4>
+                    <p>We begin with a thorough consultation to understand your vision, requirements, and budget.</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 text-center">
+                <div class="bg-white p-4 rounded shadow h-100">
+                    <div class="service-icon mb-3">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h4>2. Planning</h4>
+                    <p>Our team develops detailed plans, including designs, timelines, and resource allocation.</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 text-center">
+                <div class="bg-white p-4 rounded shadow h-100">
+                    <div class="service-icon mb-3">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h4>3. Construction</h4>
+                    <p>We execute the project with precision, maintaining quality control throughout the process.</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 text-center">
+                <div class="bg-white p-4 rounded shadow h-100">
+                    <div class="service-icon mb-3">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4>4. Completion</h4>
+                    <p>Final inspections ensure everything meets our high standards before project handover.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container text-center">
+        <h2 class="mb-4">Have a Project in Mind?</h2>
+        <p class="lead mb-4">Let's discuss how we can bring your vision to life</p>
+        <a href="{% url 'contact' %}" class="btn btn-light btn-lg">Contact Us</a>
+    </div>
+</section>
+<!-- Add this to your projects page -->
+<section class="project-tracker py-5">
+    <div class="container">
+       
+
+                        </div>
+                        
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

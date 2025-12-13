@@ -1,0 +1,519 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Shiraji General Contracting - Home{% endblock %}
+
+{% block content %}
+<!-- Enhanced Hero Section with Animation -->
+<section class="hero-enhanced" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+    <div class="container hero-content text-center">
+        <div class="hero-badge mb-3">
+            <span class="badge bg-primary">🏆 UAE's Trusted Construction Partner</span>
+        </div>
+        <h1 class="display-4 mb-4 hero-title">SHIRAJI GENERAL CONTRACTING</h1>
+        <p class="lead mb-4 hero-subtitle">Building Dreams with Quality, Innovation & Trust Since 2010</p>
+        <div class="hero-buttons">
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg me-3">Get Free Quote</a>
+            <a href="{% url 'projects' %}" class="btn btn-outline-light btn-lg">View Our Work</a>
+        </div>
+        <div class="hero-stats mt-5">
+            <div class="row text-center">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="500">0</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="15">0</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="98">0</h3>
+                        <p>Client Satisfaction</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="24">0</h3>
+                        <p>Expert Team</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Indicators -->
+<section class="trust-section py-4 bg-light">
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <div class="col-md-3 col-6 mb-3">
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+                    <p class="mb-0"><strong>Licensed & Insured</strong></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="trust-item">
+                    <i class="fas fa-clock fa-2x text-primary mb-2"></i>
+                    <p class="mb-0"><strong>On-Time Delivery</strong></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="trust-item">
+                    <i class="fas fa-handshake fa-2x text-primary mb-2"></i>
+                    <p class="mb-0"><strong>Quality Guarantee</strong></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="trust-item">
+                    <i class="fas fa-phone fa-2x text-primary mb-2"></i>
+                    <p class="mb-0"><strong>24/7 Support</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us Preview -->
+<section class="about-preview py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="about-content">
+                    <span class="section-badge">About Shiraji</span>
+                    <h2 class="mb-4">Building Excellence in the UAE for Over 15 Years</h2>
+                    <p class="lead mb-4">We are a family-owned construction company committed to delivering exceptional quality and building lasting relationships with our clients.</p>
+                    <div class="feature-list">
+                        <div class="feature-item d-flex align-items-center mb-3">
+                            <div class="feature-icon me-3">
+                                <i class="fas fa-check-circle text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Expert Craftsmanship</h6>
+                                <p class="mb-0 text-muted">Skilled professionals with years of experience</p>
+                            </div>
+                        </div>
+                        <div class="feature-item d-flex align-items-center mb-3">
+                            <div class="feature-icon me-3">
+                                <i class="fas fa-check-circle text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Modern Technology</h6>
+                                <p class="mb-0 text-muted">Latest tools and construction methods</p>
+                            </div>
+                        </div>
+                        <div class="feature-item d-flex align-items-center mb-3">
+                            <div class="feature-icon me-3">
+                                <i class="fas fa-check-circle text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Transparent Pricing</h6>
+                                <p class="mb-0 text-muted">No hidden costs, clear project estimates</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{% url 'about' %}" class="btn btn-primary">Learn More About Us</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-image-grid">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Construction Team" class="img-fluid rounded shadow">
+                        </div>
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Modern Building" class="img-fluid rounded shadow mt-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Summary -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <span class="section-badge">Our Services</span>
+            <h2>Comprehensive Construction Solutions</h2>
+            <p class="lead">From concept to completion, we handle every aspect of your construction project</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card service-card h-100">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Construction" class="service-image">
+                        <div class="service-overlay">
+                            <i class="fas fa-building fa-3x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h5 class="card-title">Construction Services</h5>
+                        <p class="card-text">From residential to commercial projects, we deliver quality construction with attention to detail and modern techniques.</p>
+                        <ul class="service-features text-start">
+                            <li>Residential Buildings</li>
+                            <li>Commercial Structures</li>
+                            <li>Renovations & Extensions</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent text-center">
+                        <a href="{% url 'services' %}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card service-card h-100">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Electrical" class="service-image">
+                        <div class="service-overlay">
+                            <i class="fas fa-bolt fa-3x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h5 class="card-title">Electrical Services</h5>
+                        <p class="card-text">Professional electrical services for new installations, repairs, and maintenance with certified electricians.</p>
+                        <ul class="service-features text-start">
+                            <li>Electrical Installations</li>
+                            <li>Wiring & Rewiring</li>
+                            <li>Emergency Repairs</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent text-center">
+                        <a href="{% url 'services' %}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card service-card h-100">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Maintenance" class="service-image">
+                        <div class="service-overlay">
+                            <i class="fas fa-tools fa-3x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h5 class="card-title">Facilities Management</h5>
+                        <p class="card-text">Regular maintenance and repair services to keep your property in optimal condition year-round.</p>
+                        <ul class="service-features text-start">
+                            <li>Preventive Maintenance</li>
+                            <li>Emergency Repairs</li>
+                            <li>Property Inspections</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent text-center">
+                        <a href="{% url 'services' %}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Process -->
+<section class="process-section py-5">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <span class="section-badge">Our Process</span>
+            <h2>How We Work</h2>
+            <p class="lead">Simple, transparent process from initial consultation to project completion</p>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="process-step text-center">
+                    <div class="process-icon">
+                        <span class="step-number">1</span>
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h5>Consultation</h5>
+                    <p>We discuss your vision, requirements, and budget to understand your project needs.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="process-step text-center">
+                    <div class="process-icon">
+                        <span class="step-number">2</span>
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h5>Planning</h5>
+                    <p>Our team creates detailed plans, timelines, and provides transparent cost estimates.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="process-step text-center">
+                    <div class="process-icon">
+                        <span class="step-number">3</span>
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h5>Construction</h5>
+                    <p>Skilled craftsmen execute the project with regular updates and quality checkpoints.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="process-step text-center">
+                    <div class="process-icon">
+                        <span class="step-number">4</span>
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h5>Handover</h5>
+                    <p>Final inspection, cleanup, and handover with warranty and ongoing support.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <h2>Featured Projects</h2>
+            <p>Take a look at some of our recent work</p>
+        </div>
+        <div class="row">
+            {% for project in featured_projects %}
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="project-card">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid">
+                    <div class="project-overlay">
+                        <h5>{{ project.title }}</h5>
+                        <p class="small">{{ project.category|title }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No featured projects available at the moment.</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'projects' %}" class="btn btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Testimonials -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <span class="section-badge">Client Reviews</span>
+            <h2>What Our Clients Say</h2>
+            <p class="lead">Real feedback from satisfied customers across the UAE</p>
+        </div>
+        <div class="row">
+            {% for testimonial in testimonials %}
+            <div class="col-md-4 mb-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text">"{{ testimonial.quote }}"</p>
+                    <div class="testimonial-author d-flex align-items-center">
+                        {% if testimonial.image %}
+                        <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="testimonial-img me-3">
+                        {% else %}
+                        <div class="testimonial-img me-3 bg-primary d-flex align-items-center justify-content-center">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        {% endif %}
+                        <div>
+                            <h6 class="mb-0">{{ testimonial.name }}</h6>
+                            <small class="text-muted">{{ testimonial.position }}{% if testimonial.company %}, {{ testimonial.company }}{% endif %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No testimonials available at the moment.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced CTA Section -->
+<section class="cta-section-enhanced">
+    <div class="container text-center">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="mb-4">Ready to Start Your Dream Project?</h2>
+                <p class="lead mb-4">Join hundreds of satisfied clients who trusted us with their construction needs. Get your free consultation today!</p>
+                <div class="cta-buttons">
+                    <a href="{% url 'contact' %}" class="btn btn-light btn-lg me-3">Get Free Quote</a>
+                    <a href="tel:+971501234567" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+                <div class="cta-features mt-4">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <i class="fas fa-clock fa-2x mb-2"></i>
+                            <p class="mb-0">Quick Response</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fas fa-calculator fa-2x mb-2"></i>
+                            <p class="mb-0">Free Estimates</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fas fa-handshake fa-2x mb-2"></i>
+                            <p class="mb-0">No Obligation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- Project Value Counter Section -->
+<section class="project-value-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="value-content">
+                    <span class="section-badge">Portfolio Value</span>
+                    <h2 class="mb-4">Projects Worth Over</h2>
+                    <div class="total-value-display">
+                        <div class="currency-symbol">AED</div>
+                        <div class="value-counter" id="total-project-value" data-target="50000000">0</div>
+                        <div class="value-suffix">Million+</div>
+                    </div>
+                    <p class="lead mt-4">Successfully delivered construction projects across the UAE, representing trust, quality, and excellence in every build.</p>
+                    <div class="value-breakdown mt-4">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="breakdown-item">
+                                    <div class="breakdown-number" data-target="150">0</div>
+                                    <div class="breakdown-label">Residential</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="breakdown-item">
+                                    <div class="breakdown-number" data-target="75">0</div>
+                                    <div class="breakdown-label">Commercial</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="breakdown-item">
+                                    <div class="breakdown-number" data-target="200">0</div>
+                                    <div class="breakdown-label">Renovations</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="value-visualization">
+                    <div class="circular-progress">
+                        <svg class="progress-ring" width="300" height="300">
+                            <circle class="progress-ring-bg" cx="150" cy="150" r="120" fill="transparent" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle class="progress-ring-fill" cx="150" cy="150" r="120" fill="transparent" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-dasharray="754" stroke-dashoffset="754"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF7F00;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#E67300;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="progress-content">
+                            <div class="progress-icon">
+                                <i class="fas fa-building fa-3x"></i>
+                            </div>
+                            <div class="progress-text">Portfolio Growth</div>
+                            <div class="progress-percentage" id="portfolio-percentage">0%</div>
+                        </div>
+                    </div>
+                    <div class="floating-elements">
+                        <div class="floating-element" style="top: 10%; left: 10%;">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <div class="floating-element" style="top: 20%; right: 15%;">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <div class="floating-element" style="bottom: 30%; left: 5%;">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div class="floating-element" style="bottom: 15%; right: 10%;">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Interactive Project Timeline -->
+<section class="project-timeline py-5 bg-light">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <span class="section-badge">Our Journey</span>
+            <h2>Building Success Year by Year</h2>
+            <p class="lead">Watch our portfolio value grow through the years</p>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-track">
+                <div class="timeline-progress" id="timeline-progress"></div>
+            </div>
+            <div class="timeline-items">
+                <div class="timeline-item" data-year="2010" data-value="2000000">
+                    <div class="timeline-marker">
+                        <span class="year">2010</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Company Founded</h5>
+                        <p>AED 2M in projects</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2015" data-value="15000000">
+                    <div class="timeline-marker">
+                        <span class="year">2015</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Major Expansion</h5>
+                        <p>AED 15M portfolio</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2020" data-value="35000000">
+                    <div class="timeline-marker">
+                        <span class="year">2020</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Digital Innovation</h5>
+                        <p>AED 35M completed</p>
+                    </div>
+                </div>
+                <div class="timeline-item active" data-year="2025" data-value="50000000">
+                    <div class="timeline-marker">
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Industry Leader</h5>
+                        <p>AED 50M+ portfolio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

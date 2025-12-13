@@ -1,0 +1,293 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Vendor Registration - Shiraji Construction{% endblock %}
+
+{% block extra_css %}
+<style>
+    .vendor-registration {
+        background: linear-gradient(135deg, #ff8000c5 0%, #ff95008c 50%, #ffb247 100%);
+        min-height: 100vh;
+        padding: 80px 0;
+    }
+    
+    .registration-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(255, 127, 0, 0.2);
+        padding: 40px;
+        margin: 20px 0;
+        border: 1px solid rgba(255, 127, 0, 0.1);
+    }
+    
+    .registration-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .registration-header h2 {
+        color: #FF7F00;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    
+    .registration-header p {
+        color: #666;
+        font-size: 16px;
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+    }
+    
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+    }
+    
+    .form-control {
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #FF7F00;
+        box-shadow: 0 0 0 0.2rem rgba(255, 127, 0, 0.25);
+    }
+    
+    .btn-register {
+        background: linear-gradient(135deg, #FF7F00 0%, #FF9500 100%);
+        border: none;
+        color: white;
+        padding: 15px 40px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    
+    .btn-register:hover {
+        background: linear-gradient(135deg, #FF9500 0%, #FFB347 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(255, 127, 0, 0.3);
+        color: white;
+    }
+    
+    .terms-section {
+        background: rgba(255, 127, 0, 0.05);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border: 1px solid rgba(255, 127, 0, 0.1);
+    }
+    
+    .form-check {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .alert {
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .required-field {
+        color: #FF7F00;
+    }
+    
+    /* Additional orange theme styling */
+    .form-control:hover {
+        border-color: rgba(255, 127, 0, 0.5);
+    }
+    
+    .alert-success {
+        background-color: rgba(255, 127, 0, 0.1);
+        border-color: #FF7F00;
+        color: #B8860B;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="vendor-registration">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="registration-card">
+                    <div class="registration-header">
+                        <h2>Vendor Registration</h2>
+                        <p>Join our network of trusted suppliers and contractors</p>
+                    </div>
+                    
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.name.id_for_label }}">{{ form.name.label }} <span class="required-field">*</span></label>
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="text-danger mt-1">
+                                            {% for error in form.name.errors %}
+                                                <small>{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }} <span class="required-field">*</span></label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-danger mt-1">
+                                            {% for error in form.email.errors %}
+                                                <small>{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }} <span class="required-field">*</span></label>
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                        <div class="text-danger mt-1">
+                                            {% for error in form.phone.errors %}
+                                                <small>{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.business_type.id_for_label }}">{{ form.business_type.label }} <span class="required-field">*</span></label>
+                                    {{ form.business_type }}
+                                    {% if form.business_type.errors %}
+                                        <div class="text-danger mt-1">
+                                            {% for error in form.business_type.errors %}
+                                                <small>{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+                            {{ form.address }}
+                            {% if form.address.errors %}
+                                <div class="text-danger mt-1">
+                                    {% for error in form.address.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.tax_id.id_for_label }}">{{ form.tax_id.label }}</label>
+                                    {{ form.tax_id }}
+                                    {% if form.tax_id.errors %}
+                                        <div class="text-danger mt-1">
+                                            {% for error in form.tax_id.errors %}
+                                                <small>{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.website.id_for_label }}">{{ form.website.label }}</label>
+                                    {{ form.website }}
+                                    {% if form.website.errors %}
+                                        <div class="text-danger mt-1">
+                                            {% for error in form.website.errors %}
+                                                <small>{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+                            {{ form.description }}
+                            {% if form.description.errors %}
+                                <div class="text-danger mt-1">
+                                    {% for error in form.description.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="terms-section">
+                            <div class="form-check">
+                                {{ form.terms_accepted }}
+                                <label for="{{ form.terms_accepted.id_for_label }}" class="form-check-label">
+                                    {{ form.terms_accepted.label }} <span class="required-field">*</span>
+                                </label>
+                            </div>
+                            {% if form.terms_accepted.errors %}
+                                <div class="text-danger mt-2">
+                                    {% for error in form.terms_accepted.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <button type="submit" class="btn btn-register">
+                            Register as Vendor
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="text-center mt-4">
+    <div class="alert alert-info">
+        <h5><i class="fas fa-info-circle"></i> Already a Registered Supplier?</h5>
+        <p>Access your supplier portal to manage your profile and upload documents:</p>
+        <a href="/supplier-portal/login/" class="btn btn-primary me-2">
+            <i class="fas fa-sign-in-alt"></i> Login to Portal
+        </a>
+        <a href="/supplier-portal/register/" class="btn btn-outline-primary">
+            <i class="fas fa-user-plus"></i> Create Portal Account
+        </a>
+    </div>
+</div>
+{% endblock %}

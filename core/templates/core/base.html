@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Shiraji Construction{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    {% block extra_css %}
+    <style>
+    /* Supplier Dropdown Styling */
+    .supplier-dropdown {
+        background-color: #fff;
+        border: 2px solid var(--primary-color, #FF7F00);
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(255, 127, 0, 0.2);
+        min-width: 220px;
+    }
+    
+    .supplier-dropdown .dropdown-item {
+        color: var(--text-dark, #333333);
+        padding: 12px 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        margin: 2px 8px;
+    }
+    
+    .supplier-dropdown .dropdown-item:hover,
+    .supplier-dropdown .dropdown-item:focus {
+        background-color: var(--primary-color, #FF7F00);
+        color: white;
+        transform: translateX(5px);
+    }
+    
+    .supplier-dropdown .dropdown-item i {
+        color: var(--primary-color, #FF7F00);
+        transition: color 0.3s ease;
+    }
+    
+    .supplier-dropdown .dropdown-item:hover i,
+    .supplier-dropdown .dropdown-item:focus i {
+        color: white;
+    }
+    
+    .supplier-dropdown .dropdown-divider {
+        border-color: var(--primary-color, #FF7F00);
+        opacity: 0.3;
+        margin: 8px 16px;
+    }
+    
+    /* Navigation active state for dropdown */
+    .navbar-nav .nav-link.dropdown-toggle.active {
+        color: var(--primary-color, #FF7F00) !important;
+    }
+    
+    /* Dropdown arrow styling */
+    .dropdown-toggle::after {
+        transition: transform 0.3s ease;
+    }
+    
+    .dropdown-toggle[aria-expanded="true"]::after {
+        transform: rotate(180deg);
+    }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'core/images/logo-full.png' %}" alt="Shiraji Logo" class="logo-img me-2" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'services' in request.path %}active{% endif %}" href="{% url 'services' %}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'projects' in request.path %}active{% endif %}" href="{% url 'projects' %}">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'careers' in request.path %}active{% endif %}" href="{% url 'careers' %}">Careers</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if 'vendor-registration' in request.path or 'supplier-portal' in request.path %}active{% endif %}" href="#" id="suppliersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Suppliers
+                        </a>
+                        <ul class="dropdown-menu supplier-dropdown">
+                            <li><a class="dropdown-item" href="{% url 'vendor_registration' %}">
+                                <i class="fas fa-file-alt me-2"></i>Vendor Registration
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/supplier-portal/login/">
+                                <i class="fas fa-sign-in-alt me-2"></i>Portal Login
+                            </a></li>
+                            <li><a class="dropdown-item" href="/supplier-portal/register/">
+                                <i class="fas fa-user-plus me-2"></i>Portal Registration
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'contact' in request.path %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <img src="{% static 'core/images/logo-full.png' %}" alt="Shiraji Logo" class="footer-logo mb-3" height="60">
+                    <p>Quality construction services for all your needs.</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'index' %}" class="text-white">Home</a></li>
+                        <li><a href="{% url 'about' %}" class="text-white">About</a></li>
+                        <li><a href="{% url 'services' %}" class="text-white">Services</a></li>
+                        <li><a href="{% url 'projects' %}" class="text-white">Projects</a></li>
+                        <li><a href="{% url 'careers' %}" class="text-white">Careers</a></li>
+                        <li><a href="{% url 'vendor_registration' %}" class="text-white">Suppliers</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> 2-98 Sarouq An Nasub St<br>Al Nahyan - E25 0000<br>Abu Dhabi, UAE</p>
+                        <p><i class="fas fa-phone me-2"></i> +971 26 76 7004</p>
+                        <p><i class="fas fa-envelope me-2"></i> info@shiraji.ae</p>
+                        <p><i class="fas fa-globe me-2"></i> www.shiraji.ae</p>
+                    </address>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/shiraji/" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; {% now "Y" %} Shiraji General Contracting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div class="chat-widget-container">
+        <div id="chat-popup" class="chat-popup" style="display: none;">
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <img src="{% static 'core/images/logo-full.png' %}" alt="Assistant" width="35" height="35">
+                    <div class="chat-header-text">
+                        <h5>Shiraji AI Assistant</h5>
+                        <small class="status-indicator">Online</small>
+                    </div>
+                </div>
+                <button id="close-chat" class="chat-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="message assistant-message">
+                    <img src="{% static 'core/images/logo-full.png' %}" alt="AI" class="message-avatar">
+                    <div class="message-content">
+                        <span>Hello! I'm Shiraji's AI Assistant. I can help you with construction services, project quotes, and answer any questions about our work. How can I assist you today?</span>
+                        <span class="message-time"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Ask about our services, get quotes, or any construction questions..." maxlength="500">
+                <button id="send-message" class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <button id="chat-button" class="chat-button">
+            <i class="fas fa-robot"></i>
+            <span class="chat-notification" id="chat-notification" style="display: none;">1</span>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{% static 'core/js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

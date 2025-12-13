@@ -1,0 +1,374 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Shiraji General Contracting - About Us{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+    <div class="container hero-content text-center">
+        <h1 class="display-4 mb-4">ABOUT SHIRAJI</h1>
+        <p class="lead">Learn about our company and our mission</p>
+    </div>
+</section>
+
+<!-- Company History -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="section-header">
+                    <h2>Our History</h2>
+                </div>
+                <p>Shiraji General Contracting was established in Abu Dhabi with a vision to deliver exceptional construction services to clients throughout the United Arab Emirates.</p>
+                <p>Since our founding, we have grown into a trusted name in the construction industry, known for our commitment to quality, reliability, and customer satisfaction.</p>
+                <p>Our team of experienced professionals brings decades of combined experience to every project, ensuring that we deliver results that exceed expectations.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Construction Team" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <h2>Our Mission & Vision</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4 class="mb-0">Our Mission</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>To deliver exceptional construction services that transform our clients' visions into reality, while maintaining the highest standards of quality, safety, and customer satisfaction.</p>
+                        <p>We are committed to:</p>
+                        <ul>
+                            <li>Excellence in every aspect of our work</li>
+                            <li>Building lasting relationships with our clients</li>
+                            <li>Creating safe and sustainable structures</li>
+                            <li>Contributing positively to the communities we serve</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4 class="mb-0">Our Vision</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>To be the leading construction company in the UAE, recognized for our innovative solutions, exceptional quality, and unwavering commitment to client satisfaction.</p>
+                        <p>We aspire to:</p>
+                        <ul>
+                            <li>Set new standards in the construction industry</li>
+                            <li>Embrace innovative technologies and sustainable practices</li>
+                            <li>Develop our team to reach their full potential</li>
+                            <li>Expand our services while maintaining our core values</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Team -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <span class="section-badge">Our Team</span>
+            <h2>Meet Our Experts</h2>
+            <p class="lead">The talented professionals behind Shiraji General Contracting</p>
+        </div>
+        
+        <!-- Team Grid with Creative Layout -->
+        <div class="team-grid">
+            <!-- Row 1: 2 members -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/salim.jpg' %}" alt="Salim Al Shiraji">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Salim Al Shiraji</h4>
+                            <span class="position">Founder & CEO</span>
+                            <p>With over 15 years of experience in construction, Salim leads our company with vision and expertise.</p>
+                            <div class="expertise-tags">
+                                <span class="tag">Leadership</span>
+                                <span class="tag">Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                {% comment %} FIXME: Add new image {% endcomment %}
+                {% comment %} <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/Abderhman.jpg' %}" alt="Abderhman">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>ABDULRAHMAN ALBREIKI</h4>
+                            <span class="position">BOARD MEMBER</span>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+        </div>
+            
+            <!-- Row 2: 3 members -->
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/arif.jpg' %}" alt="Mohammad Ariful Islam">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Mohammad Ariful Islam</h4>
+                            <span class="position">MEP Project Engineer</span>
+                            <p>Mohammed brings technical expertise and innovative solutions to every construction challenge.</p>
+                            <div class="expertise-tags">
+                                <span class="tag">MEP Systems</span>
+                                <span class="tag">Engineering</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4th team member -->
+                {% comment %} FIXME: Add new image {% endcomment %}
+                {% comment %} <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/baredin.jpg' %}" alt="Baredin">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Baseeruddin</h4>
+                            <span class="position">Project Manager</span>
+                            <p>Baseeruddin oversees project execution and ensures quality delivery on all construction projects.</p>
+                            <div class="expertise-tags">
+                                <span class="tag">Project Management</span>
+                                <span class="tag">Quality Control</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+                
+                <!-- 5th team member -->
+                
+        
+
+                {% comment %} FIXME: Add new image {% endcomment %}
+                {% comment %} <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/alaa.jpg' %}" alt="Alaa Msyah">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/alaemsyah/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Alaa Msyah</h4>
+                            <span class="position">Group Managing Director</span>
+                            <p>Alaa ensures that all our projects are completed on time, within budget, and to the highest standards.</p>
+                            <div class="expertise-tags">
+                                <span class="tag">Management</span>
+                                <span class="tag">Operations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Team Stats -->
+        <div class="team-stats mt-5">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="50">0</h3>
+                        <p>Years Combined Experience</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="100">0</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="5">0</h3>
+                        <p>Expert Team Members</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="stat-item">
+                        <h3 class="stat-number" data-target="24">0</h3>
+                        <p>Hours Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Partners Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center section-header mb-5">
+            <h2>Our Trusted Partners</h2>
+            <p class="lead">Building excellence through strategic partnerships</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <a href="#" class="partner-link" target="_blank">
+                    <div class="partner-card h-100">
+                        <div class="partner-logo-section">
+                            <img src="{{ MEDIA_URL }}company_logos/shiraji_logo.svg" alt="Shiraji Logo" class="partner-logo-uniform">
+                        </div>
+                        <div class="partner-info">
+                            <h4>Shiraji General Contracting</h4>
+                            <p>Leading general contracting company specializing in construction and project management with excellence.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Construction</span>
+                                <span class="tag">Project Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <a href="https://happy-future.shiraji.ae/" class="partner-link" target="_blank">
+                    <div class="partner-card h-100">
+                        <div class="partner-logo-section">
+                            <img src="{{ MEDIA_URL }}company_logos/happy_future_logo.svg" alt="Happy Future Logo" class="partner-logo-uniform">
+                        </div>
+                        <div class="partner-info">
+                            <h4>Happy Future General Maintenance</h4>
+                            <p>Comprehensive maintenance services for residential and commercial properties with 24/7 support.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Maintenance</span>
+                                <span class="tag">24/7 Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <a href="https://mariner.shiraji.ae/" class="partner-link" target="_blank">
+                    <div class="partner-card h-100">
+                        <div class="partner-logo-section">
+                            <img src="company_logos/marina_logo.svg" alt="Marina Technical Logo" class="partner-logo-uniform">
+                        </div>
+                        <div class="partner-info">
+                            <h4>Mariner Technical Services</h4>
+                            <p>Specialized technical services for marine and offshore installations with cutting-edge technology.</p>
+                            <div class="partner-tags">
+                                <span class="tag">Marine Services</span>
+                                <span class="tag">Offshore</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Simple Partnership Stats -->
+        <div class="row text-center mt-5">
+            <div class="col-md-3 col-6">
+                <div class="simple-stat">
+                    <h3 class="stat-number">3+</h3>
+                    <p>Partners</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="simple-stat">
+                    <h3 class="stat-number">5+</h3>
+                    <p>Years</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="simple-stat">
+                    <h3 class="stat-number">50+</h3>
+                    <p>Projects</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="simple-stat">
+                    <h3 class="stat-number">100%</h3>
+                    <p>Success</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section --> 
+<section class="cta-section">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Work With Us?</h2>
+        <p class="lead mb-4">Contact us today to discuss your project needs</p>
+        <a href="{% url 'contact' %}" class="btn btn-light btn-lg">Get in Touch</a>
+    </div>
+</section>
+{% endblock %}

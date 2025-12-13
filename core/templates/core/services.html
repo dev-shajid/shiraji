@@ -1,0 +1,413 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Shiraji General Contracting - Services{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+    <div class="container hero-content text-center">
+        <h1 class="display-4 mb-4">OUR SERVICES</h1>
+        <p class="lead">Comprehensive construction and contracting solutions</p>
+    </div>
+</section>
+
+<!-- Smart Service Filter -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="service-filter-container">
+                    <div class="search-box mb-3">
+                        
+                    </div>
+                    <div class="filter-buttons text-center">
+                        <button class="btn btn-outline-primary filter-btn active" data-filter="all">All Services</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="interior">Interior Works</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="exterior">Exterior Works</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="mechanical">Mechanical Systems</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="specialty">Specialty Services</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Smart Services Grid -->
+<section class="py-5">
+    <div class="container">
+        <div class="row" id="servicesGrid">
+            <!-- Interior Works -->
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="interior" data-keywords="carpentry wood flooring">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top service-image" alt="Carpentry & Wood Works">
+                        <div class="service-overlay">
+                            <i class="fas fa-hammer fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-primary text-white">
+                        <h5 class="mb-0">Carpentry & Wood Works</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Professional carpentry services including custom furniture, cabinets, and wooden structures.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Custom Furniture</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Cabinet Installation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Wooden Structures</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-primary btn-sm" onclick="requestQuote('Carpentry & Wood Works')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="interior" data-keywords="flooring tiles installation">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top service-image" alt="Floor & Wall Tiling">
+                        <div class="service-overlay">
+                            <i class="fas fa-th-large fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-info text-white">
+                        <h5 class="mb-0">Floor & Wall Tiling</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Expert tiling services for floors and walls with premium materials and finishes.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Ceramic Tiles</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Marble Installation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Waterproofing</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-info btn-sm" onclick="requestQuote('Floor & Wall Tiling')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="interior" data-keywords="painting contracting colors">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top service-image" alt="Painting Contracting">
+                        <div class="service-overlay">
+                            <i class="fas fa-paint-roller fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-warning text-dark">
+                        <h5 class="mb-0">Painting Contracting</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Professional painting services for interior and exterior surfaces with quality finishes.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Interior Painting</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Exterior Painting</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Texture Finishes</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-warning btn-sm" onclick="requestQuote('Painting Contracting')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="interior" data-keywords="ceiling partitions false">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top service-image" alt="False Ceiling & Partitions">
+                        <div class="service-overlay">
+                            <i class="fas fa-layer-group fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-secondary text-white">
+                        <h5 class="mb-0">False Ceiling & Partitions</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Modern false ceiling and light partition solutions for enhanced aesthetics and functionality.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Gypsum Ceiling</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Light Partitions</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Acoustic Solutions</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-secondary btn-sm" onclick="requestQuote('False Ceiling & Partitions')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="interior" data-keywords="wallpaper fixing decoration">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top service-image" alt="Wallpaper Fixing">
+                        <div class="service-overlay">
+                            <i class="fas fa-palette fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-success text-white">
+                        <h5 class="mb-0">Wallpaper Fixing</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Professional wallpaper installation and fixing services for elegant interior decoration.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Designer Wallpapers</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Texture Wallpapers</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Custom Patterns</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-success btn-sm" onclick="requestQuote('Wallpaper Fixing')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exterior Works -->
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="exterior" data-keywords="cleaning building maintenance">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://palmettocommercialservices.com/wp-content/uploads/2021/06/local-cleaning-business-janitorial-cart-in-lobby-1200x600-1.jpg" class="card-img-top service-image" alt="Building Cleaning Services">
+                        <div class="service-overlay">
+                            <i class="fas fa-broom fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-primary text-white">
+                        <h5 class="mb-0">Building Cleaning Services</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Comprehensive building cleaning and maintenance services for all types of properties.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Facade Cleaning</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Window Cleaning</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Deep Cleaning</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-primary btn-sm" onclick="requestQuote('Building Cleaning Services')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="exterior" data-keywords="fencing barbed wire security">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_z7FBgAQc-AEDGg2T-fTnaweTPZG7Wc5zA&s" class="card-img-top service-image" alt="Fencing & Security">
+                        <div class="service-overlay">
+                            <i class="fas fa-shield-alt fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-dark text-white">
+                        <h5 class="mb-0">Fencing & Security</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Professional fencing and barbed wire installation for security and boundary marking.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Chain Link Fencing</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Barbed Wire Installation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Security Gates</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-dark btn-sm" onclick="requestQuote('Fencing & Security')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="exterior" data-keywords="plaster works finishing">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top service-image" alt="Plaster Works">
+                        <div class="service-overlay">
+                            <i class="fas fa-trowel fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-info text-white">
+                        <h5 class="mb-0">Plaster Works</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Expert plastering services for smooth and durable wall and ceiling finishes.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Interior Plastering</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Exterior Plastering</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Decorative Plaster</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-info btn-sm" onclick="requestQuote('Plaster Works')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mechanical Systems -->
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="mechanical" data-keywords="air conditioning hvac ventilation">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top service-image" alt="HVAC Systems">
+                        <div class="service-overlay">
+                            <i class="fas fa-snowflake fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-primary text-white">
+                        <h5 class="mb-0">HVAC Systems</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Complete HVAC solutions including air conditioning, ventilation, and air filtration systems.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>AC Installation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Ventilation Systems</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Air Filtration</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-primary btn-sm" onclick="requestQuote('HVAC Systems')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="mechanical" data-keywords="electrical wiring fixtures">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://besttowntechnical.com/wp-content/uploads/2023/05/handsome-electrician-checking-electrical-box-with-multimetr-in-corridor-e1624860078476-1024x684.jpg" class="card-img-top service-image" alt="Electrical Services">
+                        <div class="service-overlay">
+                            <i class="fas fa-bolt fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-warning text-dark">
+                        <h5 class="mb-0">Electrical Services</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Professional electrical installation, repair, and maintenance services for all your needs.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Wiring Installation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Fixture Repair</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Electrical Maintenance</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-warning btn-sm" onclick="requestQuote('Electrical Services')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="mechanical" data-keywords="plumbing sanitary installation">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top service-image" alt="Plumbing & Sanitary">
+                        <div class="service-overlay">
+                            <i class="fas fa-wrench fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-info text-white">
+                        <h5 class="mb-0">Plumbing & Sanitary</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Complete plumbing and sanitary installation services for residential and commercial properties.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Pipe Installation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Sanitary Fixtures</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Water Systems</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-info btn-sm" onclick="requestQuote('Plumbing & Sanitary')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialty Services -->
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="specialty" data-keywords="swimming pool installation">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://whitemetalco.com/wp-content/uploads/2024/12/Swimming-Pools5-1.webp" class="card-img-top service-image" alt="Swimming Pool Installation">
+                        <div class="service-overlay">
+                            <i class="fas fa-swimming-pool fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-primary text-white">
+                        <h5 class="mb-0">Swimming Pool Installation</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Professional swimming pool design, installation, and maintenance services.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Pool Design</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Installation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Maintenance</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-primary btn-sm" onclick="requestQuote('Swimming Pool Installation')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 service-item" data-category="specialty" data-keywords="engraving ornamentation decoration">
+                <div class="card service-card h-100 hover-effect">
+                    <div class="service-image-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5j52il8xFP94KG_jm2wwZ9blHOvLCZTVGuQ5HL30bToVTeULpguXSE6y3TTv0n0vZ77k&usqp=CAU" class="card-img-top service-image" alt="Engraving & Ornamentation">
+                        <div class="service-overlay">
+                            <i class="fas fa-gem fa-2x text-white"></i>
+                        </div>
+                    </div>
+                    <div class="card-header text-center bg-success text-white">
+                        <h5 class="mb-0">Engraving & Ornamentation</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Artistic engraving and ornamentation works for decorative and architectural elements.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Stone Engraving</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Metal Ornamentation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Custom Designs</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-success btn-sm" onclick="requestQuote('Engraving & Ornamentation')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Smart Quote Modal -->
+<div class="modal fade" id="quoteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Request Quote</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="quoteForm">
+                    <div class="mb-3">
+                        <label class="form-label">Service</label>
+                        <input type="text" class="form-control" id="selectedService" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Project Details</label>
+                        <textarea class="form-control" rows="3" placeholder="Describe your project requirements..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitQuote()">Send Quote Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
