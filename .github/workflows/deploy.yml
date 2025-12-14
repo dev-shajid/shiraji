@@ -1,0 +1,28 @@
+name: CI/CD Deploy
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy to VM
+        run: |
+          ssh -o StrictHostKeyChecking=no shajid@192.168.64.4 << 'EOF'
+            cd ~/shiraji
+            git pull origin main
+            docker compose down
+            docker compose up -d --build
+          EOF
