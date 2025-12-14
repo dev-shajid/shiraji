@@ -3,7 +3,7 @@ name: CI/CD Deploy
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   deploy:
@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.8.1
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.3
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
@@ -22,7 +22,14 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no shajid@192.168.64.4 << 'EOF'
             cd ~/shiraji
-            git pull origin main
+            git fetch --all
+            git reset --hard origin/main
+
+            # Rebuild containers
             docker compose down
             docker compose up -d --build
+
+            # Run migrations
+            docker compose exec web python manage.py migrate --no-input
+
           EOF
