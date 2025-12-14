@@ -1,35 +1,23 @@
-name: CI/CD Deploy
+name: Deploy Django (Prod)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.3
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
         with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Deploy to VM
-        run: |
-          ssh -o StrictHostKeyChecking=no shajid@192.168.64.4 << 'EOF'
-            cd ~/shiraji
-            git fetch --all
-            git reset --hard origin/main
-
-            # Rebuild containers
-            docker compose down
+          script: |
+            set -e
+            cd shiraji
+            git pull origin main
+            docker compose pull
             docker compose up -d --build
-
-            # Run migrations
-            docker compose exec web python manage.py migrate --no-input
-
-          EOF
