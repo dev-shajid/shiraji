@@ -135,7 +135,7 @@
             </div>
         </div>
             
-            <!-- Row 2: 3 members -->
+            <!-- Row 2: All team members -->
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="team-member-card">
@@ -150,7 +150,7 @@
                         </div>
                         <div class="team-info">
                             <h4>Mohammad Ariful Islam</h4>
-                            <span class="position">MEP Project Engineer</span>
+                            <span class="position">Head of Engineering</span>
                             <p>Mohammed brings technical expertise and innovative solutions to every construction challenge.</p>
                             <div class="expertise-tags">
                                 <span class="tag">MEP Systems</span>
@@ -212,30 +212,99 @@
                         </div>
                     </div>
                 </div> {% endcomment %}
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/sarani.jpeg' %}" alt="Sarani Devdini Fernando Ponnamperumage">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Sarani Devdini Fernando Ponnamperumage</h4>
+                            <span class="position">Accountant</span>
+                            <p>Sarani manages our financial operations with precision and ensures fiscal responsibility across all projects.</p>
+                            <div class="expertise-tags">
+                                <span class="tag">Finance</span>
+                                <span class="tag">Accounting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/orlando.jpeg' %}" alt="Orlando Bulan Jr.">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Orlando Bulan Jr.</h4>
+                            <span class="position">Estimation & Site Engineer</span>
+                            <p>Orlando provides accurate cost estimations and oversees on-site engineering to ensure project success.</p>
+                            <div class="expertise-tags">
+                                <span class="tag">Estimation</span>
+                                <span class="tag">Site Engineering</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/rhea.jpeg' %}" alt="Rhea Villagracia">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Rhea Villagracia</h4>
+                            <span class="position">HR & Admin Manager</span>
+                            <p>Rhea leads our HR and administrative operations, ensuring a productive and positive work environment.</p>
+                            <div class="expertise-tags">
+                                <span class="tag">Human Resources</span>
+                                <span class="tag">Administration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member-card">
+                        <div class="team-image-wrapper">
+                            <img src="{% static 'core/images/riaz.jpeg' %}" alt="Riaz Uddin">
+                            <div class="team-overlay">
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>Riaz Uddin</h4>
+                            <span class="position">Project Coordinator</span>
+                            <p>Riaz coordinates project activities and ensures seamless communication between all stakeholders.</p>
+                            <div class="expertise-tags">
+                                <span class="tag">Coordination</span>
+                                <span class="tag">Communication</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <!-- Team Stats -->
         <div class="team-stats mt-5">
@@ -318,7 +387,7 @@
                 <a href="https://mariner.shiraji.ae/" class="partner-link" target="_blank">
                     <div class="partner-card h-100">
                         <div class="partner-logo-section">
-                            <img src="company_logos/marina_logo.svg" alt="Marina Technical Logo" class="partner-logo-uniform">
+                            <img src="{{ MEDIA_URL }}company_logos/marina_logo.svg" alt="Marina Technical Logo" class="partner-logo-uniform">
                         </div>
                         <div class="partner-info">
                             <h4>Mariner Technical Services</h4>

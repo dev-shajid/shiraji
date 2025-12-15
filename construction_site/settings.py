@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key-for-dev')
 DEBUG = int(os.environ.get('DEBUG', 1))
 
 # ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost 127.0.0.1 [::1]').split(' ')
-ALLOWED_HOSTS = ['shiraji.ae', 'www.shiraji.ae', '192.168.64.4', '94.136.189.140']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'shiraji.ae', 'www.shiraji.ae', '192.168.64.4', '94.136.189.140']
 
 
 
@@ -87,6 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
