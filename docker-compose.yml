@@ -14,8 +14,6 @@ services:
     command: gunicorn --bind 0.0.0.0:8000 --workers 3 construction_site.wsgi:application
     volumes:
       - .:/app
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
     expose:
       - 8000
     env_file:
@@ -28,8 +26,8 @@ services:
     restart: always
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - static_volume:/app/staticfiles:ro
-      - media_volume:/app/media:ro
+      - ./staticfiles:/app/staticfiles:ro
+      - ./media:/app/media:ro
     ports:
       - "80:80"
     depends_on:
@@ -38,5 +36,3 @@ services:
 volumes:
   website-up-date_postgres_data:
     external: true
-  static_volume:
-  media_volume:
