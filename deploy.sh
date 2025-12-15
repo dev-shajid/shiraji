@@ -39,9 +39,9 @@ docker compose up -d --build || {
 echo -e "${GREEN}✓ Containers started${NC}"
 
 echo ""
-echo -e "${GREEN}=========================================="
+echo -e "${GREEN}==========================================${NC}"
 echo "Deployment Completed Successfully!"
-echo "==========================================${NC}"
+echo "=========================================="
 echo ""
 echo "Your application is now running at:"
 echo "  - http://localhost (if running locally)"

@@ -10,14 +10,11 @@ ENV PYTHONUNBUFFERED 1
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project files (excluding volumes that will be mounted)
+# Copy project files
 COPY . .
-
-# Create directories for media and static
-RUN mkdir -p /app/media /app/staticfiles
 
 # Collect static files
 RUN python manage.py collectstatic --noinput || true
 
-# Default command (can be overridden by docker-compose)
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Default command
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "construction_site.wsgi:application"]
