@@ -11,7 +11,7 @@ services:
 
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8000 --workers 3 construction_site.wsgi:application
+    command: gunicorn --bind 0.0.0.0:8000 construction_site.wsgi:application
     volumes:
       - .:/app
     ports:
@@ -20,19 +20,6 @@ services:
       - .env
     depends_on:
       - db
-
-
-  # nginx:
-  #   image: nginx:alpine
-  #   restart: always
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
-  #     - ./staticfiles:/app/staticfiles:ro
-  #     - ./media:/app/media:ro
-  #   ports:
-  #     - "80:80"
-  #   depends_on:
-  #     - web
 
 volumes:
   website-up-date_postgres_data:
