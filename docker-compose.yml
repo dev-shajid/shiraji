@@ -11,7 +11,7 @@ services:
 
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8000
+    command: gunicorn --bind 0.0.0.0:8000 --workers 3 construction_site.wsgi:application
     volumes:
       - .:/app
     ports:
