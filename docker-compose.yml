@@ -36,4 +36,4 @@ services:
 
 volumes:
   website-up-date_postgres_data:
-    external: trueroot@shiraji:~/shiraji2# 
+    external: true
