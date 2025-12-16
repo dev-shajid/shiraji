@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <defs>
+    <linearGradient id="happyBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4caf50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#81c784;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="60" rx="8" fill="url(#happyBg)"/>
+  
+  <!-- Eco/Future Icon -->
+  <g transform="translate(15, 15)">
+    <!-- Green building -->
+    <rect x="5" y="15" width="15" height="15" fill="white" opacity="0.9"/>
+    <polygon points="5,15 12.5,8 20,15" fill="white"/>
+    
+    <!-- Solar panels on roof -->
+    <rect x="7" y="10" width="3" height="3" fill="#2e7d32" opacity="0.8"/>
+    <rect x="11" y="10" width="3" height="3" fill="#2e7d32" opacity="0.8"/>
+    <rect x="15" y="10" width="3" height="3" fill="#2e7d32" opacity="0.8"/>
+    
+    <!-- Windows -->
+    <rect x="8" y="18" width="2" height="3" fill="#4caf50"/>
+    <rect x="12" y="18" width="2" height="3" fill="#4caf50"/>
+    <rect x="16" y="18" width="2" height="3" fill="#4caf50"/>
+    
+    <!-- Tree/Plant -->
+    <circle cx="25" cy="25" r="3" fill="white" opacity="0.8"/>
+    <rect x="24" y="25" width="2" height="5" fill="white" opacity="0.8"/>
+    
+    <!-- Leaves -->
+    <ellipse cx="23" cy="22" rx="2" ry="1" fill="white" opacity="0.6"/>
+    <ellipse cx="27" cy="22" rx="2" ry="1" fill="white" opacity="0.6"/>
+  </g>
+  
+  <!-- Company Name -->
+  <text x="55" y="22" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">HAPPY FUTURE</text>
+  <text x="55" y="38" font-family="Arial, sans-serif" font-size="10" fill="#e8f5e8">Development</text>
+</svg>
