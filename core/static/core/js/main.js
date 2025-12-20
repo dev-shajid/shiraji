@@ -1,5 +1,5 @@
 // Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize tooltips
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     // Auto-hide alerts after 5 seconds
-    setTimeout(function() {
+    setTimeout(function () {
         var alerts = document.querySelectorAll('.alert');
-        alerts.forEach(function(alert) {
+        alerts.forEach(function (alert) {
             var bsAlert = new bootstrap.Alert(alert);
             bsAlert.close();
         });
@@ -18,21 +18,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Project filter functionality
     var filterButtons = document.querySelectorAll('.filter-btn');
     if (filterButtons.length > 0) {
-        filterButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
+        filterButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
                 var category = this.getAttribute('data-filter');
-                
-                filterButtons.forEach(function(btn) {
+
+                filterButtons.forEach(function (btn) {
                     btn.classList.remove('active');
                 });
                 this.classList.add('active');
-                
+
                 if (category === 'all') {
-                    document.querySelectorAll('.project-item').forEach(function(item) {
+                    document.querySelectorAll('.project-item').forEach(function (item) {
                         item.style.display = 'block';
                     });
                 } else {
-                    document.querySelectorAll('.project-item').forEach(function(item) {
+                    document.querySelectorAll('.project-item').forEach(function (item) {
                         if (item.getAttribute('data-category') === category) {
                             item.style.display = 'block';
                         } else {
@@ -70,12 +70,12 @@ function getCookie(name) {
 // Team stats counter animation
 function animateCounters() {
     const counters = document.querySelectorAll('.stat-number');
-    
+
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
         const increment = target / 100;
         let current = 0;
-        
+
         const updateCounter = () => {
             if (current < target) {
                 current += increment;
@@ -85,7 +85,7 @@ function animateCounters() {
                 counter.textContent = target;
             }
         };
-        
+
         updateCounter();
     });
 }
@@ -116,12 +116,12 @@ function calculateCost() {
     const area = parseInt(document.getElementById('area').value);
     const quality = document.getElementById('quality').value;
     const location = document.getElementById('location').value;
-    
+
     if (!area || area <= 0) {
         alert('Please enter a valid area');
         return;
     }
-    
+
     // Base rates per sq ft
     const baseRates = {
         residential: 150,
@@ -129,28 +129,28 @@ function calculateCost() {
         renovation: 100,
         infrastructure: 250
     };
-    
+
     // Quality multipliers
     const qualityMultipliers = {
         standard: 1,
         premium: 1.3,
         luxury: 1.6
     };
-    
+
     // Location multipliers
     const locationMultipliers = {
         'abu-dhabi': 1.1,
         'dubai': 1.2,
         'sharjah': 1
     };
-    
+
     const baseRate = baseRates[projectType];
     const qualityMultiplier = qualityMultipliers[quality];
     const locationMultiplier = locationMultipliers[location];
-    
+
     const totalCost = area * baseRate * qualityMultiplier * locationMultiplier;
-    
-    document.getElementById('estimated-cost').textContent = 
+
+    document.getElementById('estimated-cost').textContent =
         'AED ' + totalCost.toLocaleString() + ' - ' + (totalCost * 1.2).toLocaleString();
     document.getElementById('cost-result').style.display = 'block';
 }
@@ -162,7 +162,7 @@ function initSmartSearch() {
     searchInput.placeholder = 'Search projects, services, or ask a question...';
     searchInput.className = 'form-control smart-search';
     searchInput.id = 'smart-search';
-    
+
     // Add to navigation
     const navbar = document.querySelector('.navbar .container');
     if (navbar) {
@@ -170,9 +170,9 @@ function initSmartSearch() {
         searchContainer.className = 'search-container ms-3';
         searchContainer.appendChild(searchInput);
         navbar.appendChild(searchContainer);
-        
+
         // Smart search with suggestions
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             const query = this.value.toLowerCase();
             if (query.length > 2) {
                 showSearchSuggestions(query);
@@ -192,7 +192,7 @@ function showSearchSuggestions(query) {
         'Renovation Services',
         'Infrastructure Development'
     ].filter(item => item.toLowerCase().includes(query));
-    
+
     // Create suggestions dropdown
     let dropdown = document.getElementById('search-suggestions');
     if (!dropdown) {
@@ -201,11 +201,11 @@ function showSearchSuggestions(query) {
         dropdown.className = 'search-suggestions';
         document.querySelector('.search-container').appendChild(dropdown);
     }
-    
-    dropdown.innerHTML = suggestions.map(suggestion => 
+
+    dropdown.innerHTML = suggestions.map(suggestion =>
         `<div class="suggestion-item" onclick="selectSuggestion('${suggestion}')">${suggestion}</div>`
     ).join('');
-    
+
     dropdown.style.display = suggestions.length > 0 ? 'block' : 'none';
 }
 
@@ -225,7 +225,7 @@ function performSmartSearch(query) {
         'cost': '#cost-calculator',
         'contact': '/contact/'
     };
-    
+
     for (let [key, url] of Object.entries(searchMap)) {
         if (query.toLowerCase().includes(key)) {
             if (url.startsWith('#')) {
@@ -243,7 +243,7 @@ function initWeatherTheme() {
     // Simulate weather API call (replace with real API)
     const weatherConditions = ['sunny', 'cloudy', 'rainy', 'sandstorm'];
     const currentWeather = weatherConditions[Math.floor(Math.random() * weatherConditions.length)];
-    
+
     const themes = {
         sunny: {
             primary: '#FF7F00',
@@ -270,9 +270,9 @@ function initWeatherTheme() {
             text: '#3E2723'
         }
     };
-    
+
     const theme = themes[currentWeather];
-    
+
     // Apply theme
     document.documentElement.style.setProperty('--primary-color', theme.primary);
     document.documentElement.style.setProperty('--secondary-color', theme.secondary);
@@ -280,7 +280,7 @@ function initWeatherTheme() {
     if (heroEnhanced) {
         heroEnhanced.style.background = theme.background;
     }
-    
+
     // Add weather indicator
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
@@ -305,7 +305,7 @@ function getWeatherIcon(weather) {
 }
 
 // Initialize animations when page loads
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Animate counters when they come into view
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -315,12 +315,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     const statsSection = document.querySelector('.hero-stats');
     if (statsSection) {
         observer.observe(statsSection);
     }
-    
+
     init3DVisualizer();
     initConstructionSimulator();
     initProjectConfigurator();
@@ -330,15 +330,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function initSmartContactForm() {
     const contactForm = document.querySelector('#contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             validateSmartForm(this);
         });
-        
+
         // Real-time smart suggestions
         const messageField = contactForm.querySelector('textarea');
         if (messageField) {
-            messageField.addEventListener('input', function() {
+            messageField.addEventListener('input', function () {
                 provideSuggestions(this.value);
             });
         }
@@ -348,25 +348,25 @@ function initSmartContactForm() {
 function validateSmartForm(form) {
     const formData = new FormData(form);
     const message = formData.get('message');
-    
+
     // Smart message analysis
     const urgencyKeywords = ['urgent', 'asap', 'emergency', 'immediately'];
     const projectKeywords = ['build', 'construct', 'renovate', 'design'];
-    
+
     let priority = 'normal';
     if (urgencyKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
         priority = 'high';
     }
-    
+
     let category = 'general';
     if (projectKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
         category = 'project';
     }
-    
+
     // Add smart categorization to form data
     formData.append('priority', priority);
     formData.append('category', category);
-    
+
     // Submit with smart enhancements
     submitSmartForm(formData);
 }
@@ -378,7 +378,7 @@ function provideSuggestions(message) {
         'material': 'We source high-quality materials from certified suppliers.',
         'permit': 'We handle all permits and regulatory approvals for you.'
     };
-    
+
     for (let [keyword, suggestion] of Object.entries(suggestions)) {
         if (message.toLowerCase().includes(keyword)) {
             showSuggestionTooltip(suggestion);
@@ -388,36 +388,36 @@ function provideSuggestions(message) {
 }
 // Submit price counter animation
 document.addEventListener("DOMContentLoaded", function () {
-  const counters = document.querySelectorAll('.count-up');
-  counters.forEach((counter) => {
-    const updateCount = () => {
-      const target = +counter.getAttribute("data-target");
-      const count = +counter.innerText.replace(/[^\d]/g, "");
-      const speed = 50; // Lower is faster
-      const increment = Math.ceil(target / speed);
+    const counters = document.querySelectorAll('.count-up');
+    counters.forEach((counter) => {
+        const updateCount = () => {
+            const target = +counter.getAttribute("data-target");
+            const count = +counter.innerText.replace(/[^\d]/g, "");
+            const speed = 50; // Lower is faster
+            const increment = Math.ceil(target / speed);
 
-      if (count < target) {
-        counter.innerText = "AED " + (count + increment).toLocaleString();
-        setTimeout(updateCount, 20);
-      } else {
-        counter.innerText = "AED " + target.toLocaleString(undefined, {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        });
-      }
-    };
-    updateCount();
-  });
+            if (count < target) {
+                counter.innerText = "AED " + (count + increment).toLocaleString();
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = "AED " + target.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+        };
+        updateCount();
+    });
 });
 
 // Smart Service Filtering and Search
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize service filtering
     initServiceFilter();
-    
+
     // Initialize search functionality
     initServiceSearch();
-    
+
     // Initialize quote system
     initQuoteSystem();
 });
@@ -425,17 +425,17 @@ document.addEventListener('DOMContentLoaded', function() {
 function initServiceFilter() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const serviceItems = document.querySelectorAll('.service-item');
-    
+
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            
+
             // Add active class to clicked button
             this.classList.add('active');
-            
+
             const filter = this.getAttribute('data-filter');
-            
+
             // Filter service items
             serviceItems.forEach(item => {
                 if (filter === 'all' || item.getAttribute('data-category') === filter) {
@@ -452,7 +452,7 @@ function initServiceFilter() {
                     }, 300);
                 }
             });
-            
+
             // Update results count
             updateResultsCount(filter);
         });
@@ -462,17 +462,17 @@ function initServiceFilter() {
 function initServiceSearch() {
     const searchInput = document.getElementById('serviceSearch');
     const serviceItems = document.querySelectorAll('.service-item');
-    
-    searchInput.addEventListener('input', function() {
+
+    searchInput.addEventListener('input', function () {
         const searchTerm = this.value.toLowerCase();
-        
+
         serviceItems.forEach(item => {
             const keywords = item.getAttribute('data-keywords').toLowerCase();
             const title = item.querySelector('h5').textContent.toLowerCase();
             const description = item.querySelector('.card-text').textContent.toLowerCase();
-            
-            if (keywords.includes(searchTerm) || 
-                title.includes(searchTerm) || 
+
+            if (keywords.includes(searchTerm) ||
+                title.includes(searchTerm) ||
                 description.includes(searchTerm) ||
                 searchTerm === '') {
                 item.style.display = 'block';
@@ -492,13 +492,13 @@ function initServiceSearch() {
 function updateResultsCount(filter) {
     const serviceItems = document.querySelectorAll('.service-item');
     let visibleCount = 0;
-    
+
     serviceItems.forEach(item => {
         if (filter === 'all' || item.getAttribute('data-category') === filter) {
             visibleCount++;
         }
     });
-    
+
     // You can add a results counter here if needed
     console.log(`Showing ${visibleCount} services`);
 }
@@ -513,7 +513,7 @@ function initQuoteSystem() {
 
 function requestQuote(serviceName) {
     document.getElementById('selectedService').value = serviceName;
-    
+
     if (window.quoteModal) {
         window.quoteModal.show();
     } else {
@@ -525,29 +525,29 @@ function requestQuote(serviceName) {
 function submitQuote() {
     const form = document.getElementById('quoteForm');
     const formData = new FormData(form);
-    
+
     // Add loading state
     const submitBtn = event.target;
     const originalText = submitBtn.textContent;
     submitBtn.innerHTML = '<span class="loading"></span> Sending...';
     submitBtn.disabled = true;
-    
+
     // Simulate form submission (replace with actual AJAX call)
     setTimeout(() => {
         // Reset button
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-        
+
         // Show success message
         showSuccessMessage('Quote request sent successfully! We will contact you soon.');
-        
+
         // Close modal
         if (window.quoteModal) {
             window.quoteModal.hide();
         } else {
             $('#quoteModal').modal('hide');
         }
-        
+
         // Reset form
         form.reset();
     }, 2000);
@@ -557,11 +557,11 @@ function showSuccessMessage(message) {
     const alertDiv = document.createElement('div');
     alertDiv.className = 'success-message';
     alertDiv.textContent = message;
-    
+
     // Insert at top of services section
     const servicesSection = document.querySelector('#servicesGrid').parentElement;
     servicesSection.insertBefore(alertDiv, servicesSection.firstChild);
-    
+
     // Remove after 5 seconds
     setTimeout(() => {
         alertDiv.remove();
@@ -572,7 +572,7 @@ function showSuccessMessage(message) {
 function trackServiceInteraction(serviceName, action) {
     // Track user interactions for analytics
     console.log(`User ${action} for service: ${serviceName}`);
-    
+
     // You can integrate with Google Analytics or other tracking services here
     if (typeof gtag !== 'undefined') {
         gtag('event', action, {
@@ -583,16 +583,16 @@ function trackServiceInteraction(serviceName, action) {
 }
 
 // Add click tracking to service cards
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const serviceCards = document.querySelectorAll('.service-card');
-    
+
     serviceCards.forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function () {
             const serviceName = this.querySelector('h5').textContent;
             trackServiceInteraction(serviceName, 'card_click');
         });
     });
-    
+
     // Initialize AI Chat
     initAIChat();
 });
@@ -619,16 +619,16 @@ function initAIChat() {
         conversationStage: 'greeting' // greeting, exploring, discussing, closing
     };
 
-        // Smart company context with dynamic responses
-const smartCompanyContext = `
-We are Shiraji-Group AI Assistant – a smart, helpful construction expert for Shiraji General Contracting and its group of companies based in Abu Dhabi, UAE.
+    // Smart company context with dynamic responses
+    const smartCompanyContext = `
+We are Shiraji-Group AI Assistant – a smart, helpful construction expert for Shiraji Group and its group of companies based in Abu Dhabi, UAE.
 
 ABOUT SHIRAJI GROUP:
 Shiraji Group is a trusted collection of companies providing expert construction, maintenance, and technical services across the UAE. We collaborate with top-tier brands and ensure precision, safety, and client satisfaction in every project.
 
 GROUP COMPANIES:
 
-1. Shiraji General Contracting 🏗️
+1. Shiraji Group 🏗️
 - Leading general contracting company
 - Specializes in construction and project management
 - Website: https://www.shiraji.ae/
@@ -644,7 +644,7 @@ GROUP COMPANIES:
 
 OFFICIAL CONTACTS:
 - Location: Al Nahyan, Abu Dhabi, UAE
-- Phone: +971 26 76 7004
+- Phone: +971559425653
 - Emails:
   • info@shiraji.ae (main contact)
   • md@shirajiuea.ae (Group Managing Director)
@@ -731,7 +731,7 @@ LIMITATIONS:
 
 
     // Toggle chat popup
-    chatButton.addEventListener('click', function() {
+    chatButton.addEventListener('click', function () {
         if (chatPopup.style.display === 'none' || chatPopup.style.display === '') {
             chatPopup.style.display = 'flex';
             userInput.focus();
@@ -742,7 +742,7 @@ LIMITATIONS:
     });
 
     // Close chat popup
-    closeChat.addEventListener('click', function() {
+    closeChat.addEventListener('click', function () {
         chatPopup.style.display = 'none';
     });
 
@@ -772,9 +772,9 @@ LIMITATIONS:
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message');
         messageDiv.classList.add(isUser ? 'user-message' : 'assistant-message');
-        
-        const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        
+
+        const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
         if (isUser) {
             messageDiv.innerHTML = `
                 <div class="message-content user-content">
@@ -783,7 +783,7 @@ LIMITATIONS:
                 </div>
             `;
             // Store user message in history
-            conversationHistory.push({role: 'user', content: content, timestamp: new Date()});
+            conversationHistory.push({ role: 'user', content: content, timestamp: new Date() });
             analyzeUserInput(content);
         } else {
             messageDiv.innerHTML = `
@@ -794,12 +794,12 @@ LIMITATIONS:
                 </div>
             `;
             // Store AI response in history
-            conversationHistory.push({role: 'assistant', content: content, timestamp: new Date()});
+            conversationHistory.push({ role: 'assistant', content: content, timestamp: new Date() });
         }
-        
+
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
-        
+
         if (!isUser) {
             playNotificationSound();
         }
@@ -808,7 +808,7 @@ LIMITATIONS:
     // Enhanced user input analysis
     function analyzeUserInput(message) {
         const lowerMessage = message.toLowerCase();
-        
+
         // Detect conversation stage
         if (conversationHistory.length <= 2) {
             userProfile.conversationStage = 'greeting';
@@ -817,20 +817,20 @@ LIMITATIONS:
         } else {
             userProfile.conversationStage = 'discussing';
         }
-        
+
         // Detect project types
         if (lowerMessage.includes('villa') || lowerMessage.includes('house') || lowerMessage.includes('home')) {
             userProfile.projectType = 'residential';
         } else if (lowerMessage.includes('office') || lowerMessage.includes('commercial') || lowerMessage.includes('business')) {
             userProfile.projectType = 'commercial';
         }
-        
+
         // Detect budget mentions
         const budgetMatch = lowerMessage.match(/(\d+)\s*(aed|dirham|thousand|million)/i);
         if (budgetMatch) {
             userProfile.budget = budgetMatch[0];
         }
-        
+
         // Track interests
         const services = ['electrical', 'plumbing', 'hvac', 'swimming pool', 'renovation', 'maintenance', 'painting', 'tiling'];
         services.forEach(service => {
@@ -838,7 +838,7 @@ LIMITATIONS:
                 userProfile.interests.push(service);
             }
         });
-        
+
         userProfile.previousQuestions.push(message);
     }
 
@@ -847,10 +847,10 @@ LIMITATIONS:
         try {
             // Build conversation context (last 4 exchanges)
             const recentHistory = conversationHistory.slice(-8);
-            const contextHistory = recentHistory.map(msg => 
+            const contextHistory = recentHistory.map(msg =>
                 `${msg.role.toUpperCase()}: ${msg.content}`
             ).join('\n');
-            
+
             // Build enhanced context
             const conversationContext = `
 CONVERSATION STAGE: ${userProfile.conversationStage}
@@ -904,10 +904,10 @@ RESPOND AS SHIRAJI AI:`;
 
             const data = await response.json();
             let aiResponse = data.response || generateFallbackResponse(userMessage);
-            
+
             // Clean up response
             aiResponse = aiResponse.replace(/^(SHIRAJI AI:|AI:|ASSISTANT:)/i, '').trim();
-            
+
             return aiResponse;
         } catch (error) {
             console.error('AI API Error:', error);
@@ -918,24 +918,24 @@ RESPOND AS SHIRAJI AI:`;
     // Smart fallback responses based on context
     function generateFallbackResponse(userMessage) {
         const lowerMessage = userMessage.toLowerCase();
-        
+
         if (lowerMessage.includes('create') || lowerMessage.includes('made') || lowerMessage.includes('built')) {
             return `That sounds interesting! 🤔 I'd love to hear more about what you've created. Could you tell me more details about your project? I might be able to help with construction or improvement ideas! 🏗️`;
         }
-        
+
         if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('quote')) {
             return `I'd be happy to help with pricing! 💰 To give you an accurate estimate, could you tell me:\n\n• What type of project? (villa, office, renovation)\n• Approximate size?\n• Location in UAE?\n\nThis helps me provide better guidance! 📋`;
         }
-        
+
         if (lowerMessage.includes('time') || lowerMessage.includes('duration') || lowerMessage.includes('how long')) {
             return `Good question about timing! ⏰ Project duration varies based on scope and complexity. What specific project are you planning? I can give you a more accurate timeline estimate! 🏗️`;
         }
-        
+
         // Default contextual response
         if (conversationHistory.length > 2) {
             return `I want to make sure I understand you correctly. 🤔 Could you clarify what you're asking about? I'm here to help with any construction or service questions! 😊`;
         }
-        
+
         return `Hi there! 👋 I'm Shiraji's AI assistant. I'm here to help with construction, maintenance, and project questions. What can I help you with today? 🏗️`;
     }
 
@@ -946,12 +946,12 @@ RESPOND AS SHIRAJI AI:`;
 
         addMessage(message, true);
         userInput.value = '';
-        
+
         addMessage('', false, true);
-        
+
         const aiResponse = await sendToAI(message);
         addMessage(aiResponse, false);
-        
+
         // Suggest follow-up actions based on conversation
         setTimeout(() => {
             suggestFollowUpActions();
@@ -963,9 +963,9 @@ RESPOND AS SHIRAJI AI:`;
         if (conversationHistory.length >= 4 && !document.querySelector('.follow-up-suggestions')) {
             const suggestionsDiv = document.createElement('div');
             suggestionsDiv.classList.add('follow-up-suggestions');
-            
+
             let suggestions = [];
-            
+
             if (userProfile.projectType && !userProfile.budget) {
                 suggestions.push('Get cost estimate');
             }
@@ -974,22 +974,22 @@ RESPOND AS SHIRAJI AI:`;
             }
             suggestions.push('View our projects');
             suggestions.push('Contact our team');
-            
+
             suggestionsDiv.innerHTML = `
                 <div class="suggestion-header">💡 What would you like to do next?</div>
                 <div class="suggestion-buttons">
-                    ${suggestions.map(suggestion => 
-                        `<button class="suggestion-btn" data-action="${suggestion}">${suggestion}</button>`
-                    ).join('')}
+                    ${suggestions.map(suggestion =>
+                `<button class="suggestion-btn" data-action="${suggestion}">${suggestion}</button>`
+            ).join('')}
                 </div>
             `;
-            
+
             chatMessages.appendChild(suggestionsDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-            
+
             // Add click handlers
             document.querySelectorAll('.suggestion-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     const action = this.getAttribute('data-action');
                     userInput.value = action;
                     sendUserMessage();
@@ -1001,7 +1001,7 @@ RESPOND AS SHIRAJI AI:`;
 
     // Event listeners
     sendMessage.addEventListener('click', sendUserMessage);
-    userInput.addEventListener('keypress', function(e) {
+    userInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             sendUserMessage();
@@ -1032,9 +1032,9 @@ RESPOND AS SHIRAJI AI:`;
             </div>
         `;
         chatMessages.appendChild(quickActionsDiv);
-        
+
         document.querySelectorAll('.quick-btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const message = this.getAttribute('data-message');
                 userInput.value = message;
                 sendUserMessage();
@@ -1050,13 +1050,13 @@ RESPOND AS SHIRAJI AI:`;
 }
 
 // Smart Service Filtering and Search
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize service filtering
     initServiceFilter();
-    
+
     // Initialize search functionality
     initServiceSearch();
-    
+
     // Initialize quote system
     initQuoteSystem();
 });
@@ -1064,17 +1064,17 @@ document.addEventListener('DOMContentLoaded', function() {
 function initServiceFilter() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const serviceItems = document.querySelectorAll('.service-item');
-    
+
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            
+
             // Add active class to clicked button
             this.classList.add('active');
-            
+
             const filter = this.getAttribute('data-filter');
-            
+
             // Filter service items
             serviceItems.forEach(item => {
                 if (filter === 'all' || item.getAttribute('data-category') === filter) {
@@ -1091,7 +1091,7 @@ function initServiceFilter() {
                     }, 300);
                 }
             });
-            
+
             // Update results count
             updateResultsCount(filter);
         });
@@ -1101,17 +1101,17 @@ function initServiceFilter() {
 function initServiceSearch() {
     const searchInput = document.getElementById('serviceSearch');
     const serviceItems = document.querySelectorAll('.service-item');
-    
-    searchInput.addEventListener('input', function() {
+
+    searchInput.addEventListener('input', function () {
         const searchTerm = this.value.toLowerCase();
-        
+
         serviceItems.forEach(item => {
             const keywords = item.getAttribute('data-keywords').toLowerCase();
             const title = item.querySelector('h5').textContent.toLowerCase();
             const description = item.querySelector('.card-text').textContent.toLowerCase();
-            
-            if (keywords.includes(searchTerm) || 
-                title.includes(searchTerm) || 
+
+            if (keywords.includes(searchTerm) ||
+                title.includes(searchTerm) ||
                 description.includes(searchTerm) ||
                 searchTerm === '') {
                 item.style.display = 'block';
@@ -1131,13 +1131,13 @@ function initServiceSearch() {
 function updateResultsCount(filter) {
     const serviceItems = document.querySelectorAll('.service-item');
     let visibleCount = 0;
-    
+
     serviceItems.forEach(item => {
         if (filter === 'all' || item.getAttribute('data-category') === filter) {
             visibleCount++;
         }
     });
-    
+
     // You can add a results counter here if needed
     console.log(`Showing ${visibleCount} services`);
 }
@@ -1152,7 +1152,7 @@ function initQuoteSystem() {
 
 function requestQuote(serviceName) {
     document.getElementById('selectedService').value = serviceName;
-    
+
     if (window.quoteModal) {
         window.quoteModal.show();
     } else {
@@ -1164,29 +1164,29 @@ function requestQuote(serviceName) {
 function submitQuote() {
     const form = document.getElementById('quoteForm');
     const formData = new FormData(form);
-    
+
     // Add loading state
     const submitBtn = event.target;
     const originalText = submitBtn.textContent;
     submitBtn.innerHTML = '<span class="loading"></span> Sending...';
     submitBtn.disabled = true;
-    
+
     // Simulate form submission (replace with actual AJAX call)
     setTimeout(() => {
         // Reset button
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-        
+
         // Show success message
         showSuccessMessage('Quote request sent successfully! We will contact you soon.');
-        
+
         // Close modal
         if (window.quoteModal) {
             window.quoteModal.hide();
         } else {
             $('#quoteModal').modal('hide');
         }
-        
+
         // Reset form
         form.reset();
     }, 2000);
@@ -1196,11 +1196,11 @@ function showSuccessMessage(message) {
     const alertDiv = document.createElement('div');
     alertDiv.className = 'success-message';
     alertDiv.textContent = message;
-    
+
     // Insert at top of services section
     const servicesSection = document.querySelector('#servicesGrid').parentElement;
     servicesSection.insertBefore(alertDiv, servicesSection.firstChild);
-    
+
     // Remove after 5 seconds
     setTimeout(() => {
         alertDiv.remove();
@@ -1211,7 +1211,7 @@ function showSuccessMessage(message) {
 function trackServiceInteraction(serviceName, action) {
     // Track user interactions for analytics
     console.log(`User ${action} for service: ${serviceName}`);
-    
+
     // You can integrate with Google Analytics or other tracking services here
     if (typeof gtag !== 'undefined') {
         gtag('event', action, {
@@ -1222,11 +1222,11 @@ function trackServiceInteraction(serviceName, action) {
 }
 
 // Add click tracking to service cards
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const serviceCards = document.querySelectorAll('.service-card');
-    
+
     serviceCards.forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function () {
             const serviceName = this.querySelector('h5').textContent;
             trackServiceInteraction(serviceName, 'card_click');
         });
@@ -1243,9 +1243,9 @@ function initSmartContactForm() {
             const serviceField = contactForm.querySelector('[name="service"]');
             if (serviceField) serviceField.value = service;
         }
-        
+
         // Smart form validation
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             validateAndSubmitForm(this);
         });
@@ -1256,21 +1256,21 @@ function initSmartContactForm() {
 function initProjectConfigurator() {
     const configurator = document.getElementById('project-configurator');
     if (!configurator) return;
-    
+
     const options = {
         type: ['Villa', 'Apartment', 'Office', 'Warehouse'],
         style: ['Modern', 'Traditional', 'Contemporary', 'Industrial'],
         floors: [1, 2, 3, 4, 5],
         features: ['Swimming Pool', 'Garden', 'Parking', 'Solar Panels', 'Smart Home']
     };
-    
+
     let selectedOptions = {
         type: options.type[0],
         style: options.style[0],
         floors: options.floors[0],
         features: []
     };
-    
+
     function renderConfigurator() {
         configurator.innerHTML = `
             <div class="project-configurator">
@@ -1293,20 +1293,20 @@ function initProjectConfigurator() {
                         <div class="option-group">
                             <h5>${key.charAt(0).toUpperCase() + key.slice(1)}</h5>
                             <div class="option-buttons">
-                                ${key === 'features' ? 
-                                    values.map(value => `
+                                ${key === 'features' ?
+                values.map(value => `
                                         <button class="option-btn ${selectedOptions.features.includes(value) ? 'active' : ''}" 
                                                 onclick="toggleFeature('${value}')">
                                             ${value}
                                         </button>
                                     `).join('') :
-                                    values.map(value => `
+                values.map(value => `
                                         <button class="option-btn ${selectedOptions[key] === value ? 'active' : ''}" 
                                                 onclick="selectOption('${key}', '${value}')">
                                             ${value}
                                         </button>
                                     `).join('')
-                                }
+            }
                             </div>
                         </div>
                     `).join('')}
@@ -1314,14 +1314,14 @@ function initProjectConfigurator() {
             </div>
         `;
     }
-    
+
     function generateBuildingVisualization() {
         const floors = selectedOptions.floors;
         const style = selectedOptions.style.toLowerCase();
-        
+
         return `
             <div class="building-structure ${style}">
-                ${Array.from({length: floors}, (_, i) => `
+                ${Array.from({ length: floors }, (_, i) => `
                     <div class="floor floor-${floors - i}">
                         <div class="floor-content"></div>
                     </div>
@@ -1332,7 +1332,7 @@ function initProjectConfigurator() {
             </div>
         `;
     }
-    
+
     function calculateEstimatedCost() {
         const baseCosts = {
             Villa: 500000,
@@ -1340,14 +1340,14 @@ function initProjectConfigurator() {
             Office: 400000,
             Warehouse: 200000
         };
-        
+
         const styleMultipliers = {
             Modern: 1.2,
             Traditional: 1.0,
             Contemporary: 1.1,
             Industrial: 0.9
         };
-        
+
         const featureCosts = {
             'Swimming Pool': 50000,
             'Garden': 20000,
@@ -1355,24 +1355,24 @@ function initProjectConfigurator() {
             'Solar Panels': 30000,
             'Smart Home': 40000
         };
-        
+
         let cost = baseCosts[selectedOptions.type] * styleMultipliers[selectedOptions.style];
         cost *= selectedOptions.floors;
-        
+
         selectedOptions.features.forEach(feature => {
             cost += featureCosts[feature] || 0;
         });
-        
+
         return Math.round(cost);
     }
-    
+
     // Global functions for option selection
-    window.selectOption = function(key, value) {
+    window.selectOption = function (key, value) {
         selectedOptions[key] = value;
         renderConfigurator();
     };
-    
-    window.toggleFeature = function(feature) {
+
+    window.toggleFeature = function (feature) {
         const index = selectedOptions.features.indexOf(feature);
         if (index > -1) {
             selectedOptions.features.splice(index, 1);
@@ -1381,7 +1381,7 @@ function initProjectConfigurator() {
         }
         renderConfigurator();
     };
-    
+
     renderConfigurator();
 }
 
@@ -1389,16 +1389,16 @@ function initProjectConfigurator() {
 function init3DVisualizer() {
     const visualizerContainer = document.getElementById('building-visualizer');
     if (!visualizerContainer) return;
-    
+
     // Create interactive 3D building showcase
     const buildings = [
         { name: 'Modern Villa', model: '/static/models/villa.obj', price: 2500000 },
         { name: 'Office Complex', model: '/static/models/office.obj', price: 8500000 },
         { name: 'Apartment Building', model: '/static/models/apartment.obj', price: 12000000 }
     ];
-    
+
     let currentBuilding = 0;
-    
+
     function renderBuilding(index) {
         const building = buildings[index];
         visualizerContainer.innerHTML = `
@@ -1416,16 +1416,16 @@ function init3DVisualizer() {
                 </div>
             </div>
         `;
-        
+
         // Add rotation controls
         addRotationControls(visualizerContainer);
     }
-    
+
     function addRotationControls(container) {
         const model = container.querySelector('.building-model');
         let isRotating = false;
         let rotation = 0;
-        
+
         model.addEventListener('mousedown', () => isRotating = true);
         model.addEventListener('mouseup', () => isRotating = false);
         model.addEventListener('mousemove', (e) => {
@@ -1435,10 +1435,10 @@ function init3DVisualizer() {
             }
         });
     }
-    
+
     // Initialize with first building
     renderBuilding(0);
-    
+
     // Auto-rotate through buildings
     setInterval(() => {
         currentBuilding = (currentBuilding + 1) % buildings.length;
@@ -1450,7 +1450,7 @@ function init3DVisualizer() {
 function initConstructionSimulator() {
     const simulatorContainer = document.getElementById('construction-simulator');
     if (!simulatorContainer) return;
-    
+
     const phases = [
         { name: 'Foundation', duration: 2000, icon: 'fas fa-layer-group' },
         { name: 'Structure', duration: 3000, icon: 'fas fa-building' },
@@ -1458,10 +1458,10 @@ function initConstructionSimulator() {
         { name: 'Finishing', duration: 2500, icon: 'fas fa-paint-brush' },
         { name: 'Completion', duration: 1000, icon: 'fas fa-check-circle' }
     ];
-    
+
     let currentPhase = 0;
     let progress = 0;
-    
+
     function renderSimulator() {
         simulatorContainer.innerHTML = `
             <div class="construction-simulator">
@@ -1488,10 +1488,10 @@ function initConstructionSimulator() {
             </div>
         `;
     }
-    
+
     function animateConstruction() {
         renderSimulator();
-        
+
         setTimeout(() => {
             currentPhase = (currentPhase + 1) % phases.length;
             if (currentPhase === 0) {
@@ -1502,6 +1502,6 @@ function initConstructionSimulator() {
             }
         }, phases[currentPhase].duration);
     }
-    
+
     animateConstruction();
 }

@@ -15,7 +15,7 @@ load_dotenv()
 
 app = FastAPI(
     title="Shiraji AI Assistant",
-    description="Advanced AI Assistant for Shiraji General Contracting",
+    description="Advanced AI Assistant for Shiraji Group",
     version="2.0.0"
 )
 
@@ -46,7 +46,7 @@ class ConversationAnalyzer:
     
     def __init__(self):
         self.company_context = {
-            "name": "Shiraji General Contracting",
+            "name": "Shiraji Group",
             "location": "Al Nahyan, Abu Dhabi, UAE",
             "phone": "+971 55 942 5653",
             "email": "info@shiraji.ae",
@@ -193,7 +193,7 @@ class SmartPromptBuilder:
     
     def build_prompt(self, message: str, history: List[Dict], analysis: Dict[str, Any]) -> str:
         base_context = f"""
-You are Shiraji AI Assistant - an expert construction consultant for Shiraji General Contracting in Abu Dhabi, UAE.
+You are Shiraji AI Assistant - an expert construction consultant for Shiraji Group in Abu Dhabi, UAE.
 
 COMPANY INFO:
 - Location: Al Nahyan, Abu Dhabi, UAE
